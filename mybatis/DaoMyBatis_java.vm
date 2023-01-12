@@ -2,7 +2,20 @@
 import java.util.List;
 #parse("init_var_global.vm")
 
+import java.util.Collections;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+
+@Repository("${entity.name}Dao")
 class ${entity.name}DaoMyBatis implements ${entity.name}Dao {
+	private static final Logger LOGGER = LoggerFactory.getLogger(${entity.name}DaoMyBatis.class);
+
   private final SqlSession sqlSession;
 
   public ${entity.name}DaoMyBatis(SqlSession sqlSession) {
@@ -12,7 +25,10 @@ class ${entity.name}DaoMyBatis implements ${entity.name}Dao {
 
 	@Override
 	public Optinal<${entity.name}> findById( $fn.argumentsListWithWrapperType( $jdbc.attributesForPrimaryKey ) ) {
+		LOGGER.info("Buscando o objeto  :{} => {}", $fn.uncapitalize(${entity.name}), $jdbc.attributesForPrimaryKey ));
+		
 		${entity.name} entity = this.sqlSession.select("${namespace}/$fn.tolowercase(${entity.name})", $fn.argumentsListWithWrapperType( $jdbc.attributesForPrimaryKey ) );
+
 		return Optinal.of(entity);		
 	}
 
