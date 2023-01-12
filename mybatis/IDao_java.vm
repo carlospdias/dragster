@@ -1,31 +1,9 @@
 
 import java.util.List;
 
-import ${recordPackage}.${recordClass};
 
+interface ${entity.name}Dao{
 
-interface ${entity.name}Persistence{
-
-  ${recordClass}findById($fn.argumentsListWithWrapperType($entity.keyAttributes));
-
-  List<${recordClass}>findAll();
-
-	long countAll() ;
-
-  save(${recordClass}entity);
-
-  update(${recordClass}entity);
-
-  boolean update(${recordClass}entity);
-
-  create(${recordClass}entity);
-
-	boolean deleteById( $fn.argumentsListWithWrapperType($entity.keyAttributes) );
-
-	boolean delete( ${recordClass}$recordInstance);
-
-	boolean exists( $fn.argumentsListWithWrapperType($entity.keyAttributes) ) ;
-
-	boolean exists( ${recordClass}$recordInstance);
+  ${entity.name}findById($fn.argumentsListWithWrapperType($entity.keyAttributes));
 
 }

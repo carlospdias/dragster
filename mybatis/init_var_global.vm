@@ -1,0 +1,2 @@
+#set( $namespace             = "sgp.mappers" )
+#set( $AUTHOR = "Telosys" )
