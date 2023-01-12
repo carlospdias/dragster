@@ -1,0 +1,73 @@
+
+import java.util.List;
+
+class ${entity.name}DaoMyBatis implements ${entity.name}Dao {
+  private final SqlSession sqlSession;
+
+  public ${entity.name}DaoMyBatis(SqlSession sqlSession) {
+    this.sqlSession = sqlSession;
+  }
+
+
+	@Override
+	public Optinal<${entity.name}> findById( $fn.argumentsListWithWrapperType( $jdbc.attributesForPrimaryKey ) ) {
+		
+		${entity.name} entity = this.sqlSession.select("");
+
+		return Optinal.of(entity);
+		
+	}
+
+	@Override
+	public List<${entity.name}> findAll() {
+		List<${entity.name}> entities = this.sqlSession.select("");
+		if (entities!= null){
+			return Collections.emptyList(entities);
+		}
+		Collections.emptyList();
+	}
+
+@Override
+public long insert(${recordClass} ${recordInstance}) {
+	 this.sqlSession.insert("", ${recordInstance});
+	}
+
+	
+	@Override
+	public boolean update(${recordClass} $recordInstance) {
+		int result = this.sqlSession.update("", $recordInstance);
+
+		if (result <1){
+			throw new PersistenceException("Falha na atualização ", $recordInstance);
+		}
+	}	
+
+	@Override
+	public boolean deleteById( $fn.argumentsListWithWrapperType( $jdbc.attributesForPrimaryKey ) ) {
+		int result = this.sqlSession.delete("", $recordInstance);
+
+		if (result <1){
+			throw new PersistenceException("Falha na Exclusão por id ", $recordInstance);
+		}
+	}
+
+	@Override
+	public boolean delete( ${recordClass} $recordInstance ) {
+		int result = this.sqlSession.delete("", $recordInstance);
+
+		if (result <1){
+			throw new PersistenceException("Falha na Exclusão por id ", $recordInstance);
+		}
+	}
+
+	public boolean exists( $fn.argumentsListWithWrapperType( $jdbc.attributesForPrimaryKey ) ) {
+		int result = this.sqlSession.select("", $recordInstance);
+		reutrn result > 0;
+	}
+
+	@Override
+	public long countAll() {
+		return this.sqlSession.select("", $recordInstance);
+	}
+
+}
