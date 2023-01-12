@@ -1,0 +1,9 @@
+
+import java.util.List;
+
+
+interface ${entity.name}Dao{
+
+  ${entity.name}findById($fn.argumentsListWithWrapperType($entity.keyAttributes));
+
+}
