@@ -1,0 +1,47 @@
+#include( "/includes/cabecalho.xml.txt")
+  #set( $user = "Velocity" )
+  #foreach( $entity in $model.allEntites)
+  
+  <changeSet  author="$user"  id="create-sequence-$entity.sqlTableName">  
+    <createSequence cycle="false" incrementBy="1" ordered="true"  sequenceName="sq_$fn.toLowerCase($entity.sqlTableName)"  startValue="1"/>  
+  </changeSet>
+
+  <changeSet  id="create-table-$fn.toLowerCase($entity.sqlTableName)"  author="$user">
+    <createTable  tableName="$entity.sqlTableName">  
+  #foreach( $attribute in $entity.attributes )
+    <column  name="$attribute.sqlColumnName"  type="$attribute.sqlColumnType"/>
+  #end
+  </createTable>
+    <rollback>
+      drop table $entity.sqlTableName
+    </rollback>
+  </changeSet>
+  
+  #if( $entity.hasPrimaryKey() )
+   <changeSet  id="create-contraint-pk_$entity"  author="$user">
+    <addPrimaryKey tableName="$entity.sqlTableName" columnNames="$entity.sqlPrimaryKeyColumnsAsString" constraintName="pk_$entity"/>
+   </changeSet> 
+  #end
+
+  #end## foreach( $entity )
+  
+  #foreach( $entity in $model.allEntites  )
+## #if ( $entity.hasForeignKeys() ) 
+#foreach( $fk in $entity.databaseForeignKeys )
+<changeSet  id="create-contraint-fk_$fk.name"  author="$user">
+  <addForeignKeyConstraint  baseColumnNames="$fk.sqlOriginColumnsAsString"  
+            baseTableName=" $tableName"   
+            constraintName="$fk.name"  
+            deferrable="true"  
+            initiallyDeferred="true"  
+            onDelete="CASCADE"  
+            onUpdate="RESTRICT"  
+            referencedColumnNames="$fk.sqlReferencedColumnsAsString"  
+            referencedTableName="${fk.sqlReferencedTableName}"  
+            validate="true"/>
+
+</changeSet>
+#end##if
+#end## foreach( $fk )
+
+#include( "/includes/rodape.xml.txt")
