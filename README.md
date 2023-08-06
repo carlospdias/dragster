@@ -1,4 +1,4 @@
-
+o
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 
@@ -19,26 +19,12 @@ Adicione etiquetas de algum lugar, como: [shields.io](https://shields.io/)
 ## Infraestrutura Corporativa
 Estão aqui todos os ambientes que precisam estar disponíveis para aplicação
 
-- Produção
+|Ambiente| Servidor app   | Tipo       | Instalação |Link final                           |IC
+|:-------| :----------    | :--------- |:-----------|:---------------------------------- |:--------|
+|Desenvolvimento| app.jus.br/junc| JBoss      | Ansible    |**Obrigatório**. A chave da sua API |link pa ic|
+|Homologação| app.jus.br/junc| JBoss      | Ansible    |**Obrigatório**. A chave da sua API |link pa ic|
+|Produção| app.jus.br/junc| JBoss      | Ansible    |**Obrigatório**. A chave da sua API |link pa ic|
 
-```mermaid
-  graph TD;
-      Oracle--> coso dos dos d;
-      
-```
-- Homologação
-```mermaid
-  graph TD;
-      Oracle--> coso dos dos d;
-      
-```
-
-- Desenvolvimento
-```mermaid
-  graph TD;
-      Oracle--> coso dos dos d;
-      
-  ```
 
 ## Repositórios
 
