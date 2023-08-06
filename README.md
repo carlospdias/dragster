@@ -54,26 +54,27 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 Clone o projeto
 
-```bash
-  git clone https://link-para-o-projeto
-```
+```sh
+git clone https://link-para-o-projeto
+cd link-para-o-projeto #Entre no projeto
 
-Entre no diretório do projeto
+$ tree  -L 4 
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── br
+    │   └── resources
+    │       ├── application.properties
+    │       └── migracoes
+    └── test
+        ├── java
+        │   └── br
+        └── resources
+            └── application-test.properties
 
-```bash
-  cd my-project
-```
-
-Instale as dependências
-
-```bash
-  npm install
-```
-
-Inicie o servidor
-
-```bash
-  npm run start
+npm install  #Instale as dependências
+npm run start  #Inicie o servidor
 ```
 
 
