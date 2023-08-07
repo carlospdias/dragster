@@ -33,6 +33,9 @@ Estão aqui todos os ambientes que precisam estar disponíveis para aplicação
 |Homologação| app.jus.br/junc| JBoss      | Ansible    |**Obrigatório**. A chave da sua API |link pa ic|
 |Produção| app.jus.br/junc| JBoss      | Ansible    |**Obrigatório**. A chave da sua API |link pa ic|
 
+### Histórico Operacional
+ - Link para um arquivo
+ - servico web
 
 ## Repositórios
 
